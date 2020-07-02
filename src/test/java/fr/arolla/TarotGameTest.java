@@ -1,53 +1,70 @@
 package fr.arolla;
 
-import org.junit.Assert;
+import fr.arolla.card.CardColor;
+import fr.arolla.card.CardValue;
+import fr.arolla.card.ColoredCard;
+import fr.arolla.card.Trump;
+import fr.arolla.card.TrumpValue;
 import org.junit.Test;
 
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class TarotGameTest {
 
     @Test
     public void the_3_should_win_over_ace_and_two() {
-        var ace = new Card(CardValue.ACE, CardColor.SPADE);
-        var two = new Card(CardValue.TWO, CardColor.SPADE);
-        var three = new Card(CardValue.THREE, CardColor.SPADE);
+        var ace = new ColoredCard(CardValue.ACE, CardColor.SPADE);
+        var two = new ColoredCard(CardValue.TWO, CardColor.SPADE);
+        var three = new ColoredCard(CardValue.THREE, CardColor.SPADE);
 
-        Card winningCard = TarotGame.getWinningCard(List.of(ace, two, three));
+        var winningCard = TarotGame.getWinningCard(List.of(ace, two, three));
 
-        Assert.assertEquals(three, winningCard);
+        assertEquals(three, winningCard);
     }
 
     @Test
     public void the_8_should_win_over_5_and_two() {
-        var eight = new Card(CardValue.EIGHT, CardColor.SPADE);
-        var two = new Card(CardValue.TWO, CardColor.SPADE);
-        var five = new Card(CardValue.FIVE, CardColor.SPADE);
+        var eight = new ColoredCard(CardValue.EIGHT, CardColor.SPADE);
+        var two = new ColoredCard(CardValue.TWO, CardColor.SPADE);
+        var five = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
 
-        Card winningCard = TarotGame.getWinningCard(List.of(eight, two, five));
+        var winningCard = TarotGame.getWinningCard(List.of(eight, two, five));
 
-        Assert.assertEquals(eight, winningCard);
+        assertEquals(eight, winningCard);
     }
 
     @Test
     public void the_8_of_heart_should_win_over_9_of_spade_and_two_of_heart() {
-        var eightHeart = new Card(CardValue.EIGHT, CardColor.HEART);
-        var nineSpade = new Card(CardValue.NINE, CardColor.SPADE);
-        var twoHeart = new Card(CardValue.TWO, CardColor.HEART);
+        var eightHeart = new ColoredCard(CardValue.EIGHT, CardColor.HEART);
+        var nineSpade = new ColoredCard(CardValue.NINE, CardColor.SPADE);
+        var twoHeart = new ColoredCard(CardValue.TWO, CardColor.HEART);
 
-        Card winningCard = TarotGame.getWinningCard(List.of(eightHeart, nineSpade, twoHeart));
+        var winningCard = TarotGame.getWinningCard(List.of(eightHeart, nineSpade, twoHeart));
 
-        Assert.assertEquals(eightHeart, winningCard);
+        assertEquals(eightHeart, winningCard);
     }
 
     @Test
     public void the_king_of_heart_should_win_over_king_of_club_and_king_of_diamond() {
-        var kingHeart = new Card(CardValue.KING, CardColor.HEART);
-        var kingClub = new Card(CardValue.KING, CardColor.CLUB);
-        var kingDiamond = new Card(CardValue.KING, CardColor.DIAMOND);
+        var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
+        var kingClub = new ColoredCard(CardValue.KING, CardColor.CLUB);
+        var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
 
-        Card winningCard = TarotGame.getWinningCard(List.of(kingHeart, kingClub, kingDiamond));
+        var winningCard = TarotGame.getWinningCard(List.of(kingHeart, kingClub, kingDiamond));
 
-        Assert.assertEquals(kingHeart, winningCard);
+        assertEquals(kingHeart, winningCard);
+    }
+
+    @Test
+    public void the_15_should_win_over_14_and_2_trumps() {
+        var fifteen = new Trump(TrumpValue.FIFTEEN);
+        var fourteen = new Trump(TrumpValue.FOURTEEN);
+        var two = new Trump(TrumpValue.TWO);
+
+        var winningCard = TarotGame.getWinningCard(List.of(fifteen, fourteen, two));
+
+        assertEquals(fifteen, winningCard);
     }
 }

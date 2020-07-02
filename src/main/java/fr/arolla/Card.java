@@ -3,10 +3,14 @@ package fr.arolla;
 import java.util.Objects;
 
 public class Card {
-    private int cardValue;
+    private final int cardValue;
 
     public Card(int cardValue) {
         this.cardValue = cardValue;
+    }
+
+    public int getCardValue() {
+        return cardValue;
     }
 
     @Override
@@ -20,5 +24,12 @@ public class Card {
     @Override
     public int hashCode() {
         return Objects.hash(cardValue);
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "cardValue=" + cardValue +
+                '}';
     }
 }

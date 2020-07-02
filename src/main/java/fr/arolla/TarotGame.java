@@ -3,11 +3,16 @@ package fr.arolla;
 import java.util.List;
 
 public class TarotGame {
-    public static Card getWinningCard(List<Card> cards) {
-        if (cards.containsAll(List.of(new Card(1), new Card(2), new Card(3)))) {
-            return new Card(3);
+    public static Card getWinningCard(final List<Card> cards) {
+        Card reference = cards.get(0);
+
+        for (int i = 1; i < cards.size(); i++) {
+            var currentCard = cards.get(i);
+            if (currentCard.getCardValue() > reference.getCardValue()) {
+                reference = currentCard;
+            }
         }
 
-        return new Card(8);
+        return reference;
     }
 }

@@ -4,13 +4,19 @@ import java.util.Objects;
 
 public class Card {
     private final int cardValue;
+    private final CardColor cardColor;
 
-    public Card(int cardValue) {
+    public Card(int cardValue, CardColor cardColor) {
         this.cardValue = cardValue;
+        this.cardColor = cardColor;
     }
 
     public int getCardValue() {
         return cardValue;
+    }
+
+    public CardColor getCardColor() {
+        return cardColor;
     }
 
     @Override
@@ -30,6 +36,7 @@ public class Card {
     public String toString() {
         return "Card{" +
                 "cardValue=" + cardValue +
+                ", cardColor=" + cardColor +
                 '}';
     }
 }

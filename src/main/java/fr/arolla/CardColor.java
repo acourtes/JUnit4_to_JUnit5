@@ -1,5 +1,5 @@
 package fr.arolla;
 
 public enum CardColor {
-    SPADE, HEART
+    SPADE, DIAMOND, CLUB, HEART
 }

@@ -3,20 +3,12 @@ package fr.arolla;
 import java.util.Objects;
 
 public class Card {
-    private final int cardValue;
-    private final CardColor cardColor;
+    public final CardValue cardValue;
+    public final CardColor cardColor;
 
-    public Card(int cardValue, CardColor cardColor) {
+    public Card(CardValue cardValue, CardColor cardColor) {
         this.cardValue = cardValue;
         this.cardColor = cardColor;
-    }
-
-    public int getCardValue() {
-        return cardValue;
-    }
-
-    public CardColor getCardColor() {
-        return cardColor;
     }
 
     @Override

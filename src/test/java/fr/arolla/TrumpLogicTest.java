@@ -50,6 +50,6 @@ public class TrumpLogicTest {
 
     @Test
     public void test_trumps_logic() {
-        assertThat(TarotGame.getWinningCard(trick)).isEqualTo(winningCard);
+        assertThat(TrickManager.getWinningCard(trick)).isEqualTo(winningCard);
     }
 }

@@ -16,7 +16,7 @@ public class PointsCounterTest {
         var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
         var sevenClub = new ColoredCard(CardValue.SEVEN, CardColor.CLUB);
 
-        var result = PointsCounter.countPointsForTwoCards(kingHeart, sevenClub);
+        var result = PointsCounter.countPoints(kingHeart, sevenClub);
 
         assertThat(result).isEqualTo(5);
     }
@@ -26,7 +26,7 @@ public class PointsCounterTest {
         var queenSpade = new ColoredCard(CardValue.QUEEN, CardColor.SPADE);
         var eightClub = new ColoredCard(CardValue.EIGHT, CardColor.CLUB);
 
-        var result = PointsCounter.countPointsForTwoCards(queenSpade, eightClub);
+        var result = PointsCounter.countPoints(queenSpade, eightClub);
 
         assertThat(result).isEqualTo(4);
     }
@@ -36,7 +36,7 @@ public class PointsCounterTest {
         var knightDiamond = new ColoredCard(CardValue.KNIGHT, CardColor.DIAMOND);
         var nineClub = new ColoredCard(CardValue.NINE, CardColor.CLUB);
 
-        var result = PointsCounter.countPointsForTwoCards(knightDiamond, nineClub);
+        var result = PointsCounter.countPoints(knightDiamond, nineClub);
 
         assertThat(result).isEqualTo(3);
     }
@@ -46,7 +46,7 @@ public class PointsCounterTest {
         var jackHeart = new ColoredCard(CardValue.JACK, CardColor.HEART);
         var fourClub = new ColoredCard(CardValue.FOUR, CardColor.CLUB);
 
-        var result = PointsCounter.countPointsForTwoCards(jackHeart, fourClub);
+        var result = PointsCounter.countPoints(jackHeart, fourClub);
 
         assertThat(result).isEqualTo(2);
     }
@@ -56,7 +56,7 @@ public class PointsCounterTest {
         var tenDiamond = new ColoredCard(CardValue.TEN, CardColor.DIAMOND);
         var sixClub = new ColoredCard(CardValue.SIX, CardColor.CLUB);
 
-        var result = PointsCounter.countPointsForTwoCards(tenDiamond, sixClub);
+        var result = PointsCounter.countPoints(tenDiamond, sixClub);
 
         assertThat(result).isEqualTo(1);
     }
@@ -66,7 +66,7 @@ public class PointsCounterTest {
         var twentyOne = new Trump(TrumpValue.TWENTY_ONE);
         var six = new Trump(TrumpValue.SIX);
 
-        var result = PointsCounter.countPointsForTwoCards(twentyOne, six);
+        var result = PointsCounter.countPoints(twentyOne, six);
 
         assertThat(result).isEqualTo(5);
     }
@@ -76,7 +76,7 @@ public class PointsCounterTest {
         var one = new Trump(TrumpValue.ONE);
         var sixteen = new Trump(TrumpValue.SIXTEEN);
 
-        var result = PointsCounter.countPointsForTwoCards(one, sixteen);
+        var result = PointsCounter.countPoints(one, sixteen);
 
         assertThat(result).isEqualTo(5);
     }
@@ -86,7 +86,7 @@ public class PointsCounterTest {
         var fool = new Trump(TrumpValue.FOOL);
         var nineteen = new Trump(TrumpValue.NINETEEN);
 
-        var result = PointsCounter.countPointsForTwoCards(fool, nineteen);
+        var result = PointsCounter.countPoints(fool, nineteen);
 
         assertThat(result).isEqualTo(5);
     }
@@ -96,7 +96,7 @@ public class PointsCounterTest {
         var three = new Trump(TrumpValue.THREE);
         var nineteen = new Trump(TrumpValue.NINETEEN);
 
-        var result = PointsCounter.countPointsForTwoCards(three, nineteen);
+        var result = PointsCounter.countPoints(three, nineteen);
 
         assertThat(result).isEqualTo(1);
     }
@@ -106,7 +106,7 @@ public class PointsCounterTest {
         var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
         var queenClub = new ColoredCard(CardValue.QUEEN, CardColor.CLUB);
 
-        var result = PointsCounter.countPointsForTwoCards(kingDiamond, queenClub);
+        var result = PointsCounter.countPoints(kingDiamond, queenClub);
 
         assertThat(result).isEqualTo(8);
     }

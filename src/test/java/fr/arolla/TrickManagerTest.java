@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class TarotGameTest {
+public class TrickManagerTest {
 
     @Test
     public void the_3_should_win_over_ace_and_two() {
@@ -19,7 +19,7 @@ public class TarotGameTest {
         var two = new ColoredCard(CardValue.TWO, CardColor.SPADE);
         var three = new ColoredCard(CardValue.THREE, CardColor.SPADE);
 
-        var winningCard = TarotGame.getWinningCard(List.of(ace, two, three));
+        var winningCard = TrickManager.getWinningCard(List.of(ace, two, three));
 
         assertEquals(three, winningCard);
     }
@@ -30,7 +30,7 @@ public class TarotGameTest {
         var two = new ColoredCard(CardValue.TWO, CardColor.SPADE);
         var five = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
 
-        var winningCard = TarotGame.getWinningCard(List.of(eight, two, five));
+        var winningCard = TrickManager.getWinningCard(List.of(eight, two, five));
 
         assertEquals(eight, winningCard);
     }
@@ -41,7 +41,7 @@ public class TarotGameTest {
         var nineSpade = new ColoredCard(CardValue.NINE, CardColor.SPADE);
         var twoHeart = new ColoredCard(CardValue.TWO, CardColor.HEART);
 
-        var winningCard = TarotGame.getWinningCard(List.of(eightHeart, nineSpade, twoHeart));
+        var winningCard = TrickManager.getWinningCard(List.of(eightHeart, nineSpade, twoHeart));
 
         assertEquals(eightHeart, winningCard);
     }
@@ -52,7 +52,7 @@ public class TarotGameTest {
         var kingClub = new ColoredCard(CardValue.KING, CardColor.CLUB);
         var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
 
-        var winningCard = TarotGame.getWinningCard(List.of(kingHeart, kingClub, kingDiamond));
+        var winningCard = TrickManager.getWinningCard(List.of(kingHeart, kingClub, kingDiamond));
 
         assertEquals(kingHeart, winningCard);
     }
@@ -63,7 +63,7 @@ public class TarotGameTest {
         var fourteen = new Trump(TrumpValue.FOURTEEN);
         var two = new Trump(TrumpValue.TWO);
 
-        var winningCard = TarotGame.getWinningCard(List.of(fifteen, fourteen, two));
+        var winningCard = TrickManager.getWinningCard(List.of(fifteen, fourteen, two));
 
         assertEquals(fifteen, winningCard);
     }
@@ -74,7 +74,7 @@ public class TarotGameTest {
         var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
         var fiveSpade = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
 
-        var winningCard = TarotGame.getWinningCard(List.of(fiveSpade, kingHeart, twoTrump));
+        var winningCard = TrickManager.getWinningCard(List.of(fiveSpade, kingHeart, twoTrump));
 
         assertEquals(twoTrump, winningCard);
     }
@@ -85,7 +85,7 @@ public class TarotGameTest {
         var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
         var fiveSpade = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
 
-        var winningCard = TarotGame.getWinningCard(List.of(fiveSpade, kingHeart, oneTrump));
+        var winningCard = TrickManager.getWinningCard(List.of(fiveSpade, kingHeart, oneTrump));
 
         assertEquals(oneTrump, winningCard);
     }
@@ -97,7 +97,7 @@ public class TarotGameTest {
         var fiveSpade = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
         var fool = new Trump(TrumpValue.FOOL);
 
-        var winningCard = TarotGame.getWinningCard(List.of(fiveSpade, fool, kingHeart, oneTrump));
+        var winningCard = TrickManager.getWinningCard(List.of(fiveSpade, fool, kingHeart, oneTrump));
 
         assertEquals(oneTrump, winningCard);
     }
@@ -108,7 +108,7 @@ public class TarotGameTest {
         var fiveSpade = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
         var fool = new Trump(TrumpValue.FOOL);
 
-        var winningCard = TarotGame.getWinningCard(List.of(fiveSpade, fool, kingHeart));
+        var winningCard = TrickManager.getWinningCard(List.of(fiveSpade, fool, kingHeart));
 
         assertEquals(fiveSpade, winningCard);
     }

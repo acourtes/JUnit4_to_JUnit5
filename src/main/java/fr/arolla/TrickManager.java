@@ -7,7 +7,7 @@ import fr.arolla.card.TrumpValue;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TarotGame {
+public class TrickManager {
 
     private final static Card TWENTY_ONE_TRUMP = new Trump(TrumpValue.TWENTY_ONE);
 

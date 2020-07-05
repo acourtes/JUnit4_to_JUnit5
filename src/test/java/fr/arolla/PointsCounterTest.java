@@ -1,6 +1,10 @@
 package fr.arolla;
 
-import fr.arolla.card.*;
+import fr.arolla.card.CardColor;
+import fr.arolla.card.CardValue;
+import fr.arolla.card.ColoredCard;
+import fr.arolla.card.Trump;
+import fr.arolla.card.TrumpValue;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,7 +32,7 @@ public class PointsCounterTest {
     }
 
     @Test
-    public void should_count_3_for_a_knight_and_an_9() {
+    public void should_count_3_for_a_knight_and_a_9() {
         var knightDiamond = new ColoredCard(CardValue.KNIGHT, CardColor.DIAMOND);
         var nineClub = new ColoredCard(CardValue.NINE, CardColor.CLUB);
 
@@ -38,17 +42,17 @@ public class PointsCounterTest {
     }
 
     @Test
-    public void should_count_2_for_a_jack_and_an_3() {
+    public void should_count_2_for_a_jack_and_a_4() {
         var jackHeart = new ColoredCard(CardValue.JACK, CardColor.HEART);
-        var threeClub = new ColoredCard(CardValue.THREE, CardColor.CLUB);
+        var fourClub = new ColoredCard(CardValue.FOUR, CardColor.CLUB);
 
-        int result = PointsCounter.count(jackHeart, threeClub);
+        int result = PointsCounter.count(jackHeart, fourClub);
 
         assertThat(result).isEqualTo(2);
     }
 
     @Test
-    public void should_count_1_for_a_10_and_an_6() {
+    public void should_count_1_for_a_10_and_a_6() {
         var tenDiamond = new ColoredCard(CardValue.TEN, CardColor.DIAMOND);
         var sixClub = new ColoredCard(CardValue.SIX, CardColor.CLUB);
 
@@ -68,12 +72,32 @@ public class PointsCounterTest {
     }
 
     @Test
-    public void should_count_5_for_a_1_and_an_16_trumps() {
+    public void should_count_5_for_a_1_and_a_16_trumps() {
         var one = new Trump(TrumpValue.ONE);
         var sixteen = new Trump(TrumpValue.SIXTEEN);
 
         int result = PointsCounter.count(one, sixteen);
 
         assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    public void should_count_5_for_a_fool_and_a_19_trumps() {
+        var fool = new Trump(TrumpValue.FOOL);
+        var nineteen = new Trump(TrumpValue.NINETEEN);
+
+        int result = PointsCounter.count(fool, nineteen);
+
+        assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    public void should_count_1_for_a_3_and_a_19_trumps() {
+        var three = new Trump(TrumpValue.THREE);
+        var nineteen = new Trump(TrumpValue.NINETEEN);
+
+        int result = PointsCounter.count(three, nineteen);
+
+        assertThat(result).isEqualTo(1);
     }
 }

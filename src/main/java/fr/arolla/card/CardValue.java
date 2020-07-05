@@ -22,7 +22,7 @@ public enum CardValue {
         this.points = points;
     }
 
-    public int getPoints() {
+    protected int getPoints() {
         return points;
     }
 }

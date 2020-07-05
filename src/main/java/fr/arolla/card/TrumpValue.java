@@ -1,7 +1,7 @@
 package fr.arolla.card;
 
 public enum TrumpValue {
-    FOOL(0),
+    FOOL(5),
     ONE(5),
     TWO(0),
     THREE(0),
@@ -30,7 +30,7 @@ public enum TrumpValue {
         this.points = points;
     }
 
-    public int getPoints() {
+    protected int getPoints() {
         return points;
     }
 }

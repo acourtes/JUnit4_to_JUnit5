@@ -18,6 +18,8 @@ public class TarotGame {
 
         var trumpsInTheTrick = trick.stream()
                 .filter(card -> card instanceof Trump)
+                .map(card -> (Trump)card)
+                .filter(trump -> trump.value != TrumpValue.FOOL)
                 .collect(Collectors.toList());
 
         Card reference;

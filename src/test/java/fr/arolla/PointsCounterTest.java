@@ -38,4 +38,24 @@ public class PointsCounterTest {
 
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    public void should_count_2_for_a_jack_and_an_3() {
+        var jackHeart = new ColoredCard(CardValue.JACK, CardColor.HEART);
+        var threeClub = new ColoredCard(CardValue.THREE, CardColor.CLUB);
+
+        int result = PointsCounter.count(jackHeart, threeClub);
+
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    public void should_count_1_for_a_10_and_an_6() {
+        var tenDiamond = new ColoredCard(CardValue.TEN, CardColor.DIAMOND);
+        var sixClub = new ColoredCard(CardValue.SIX, CardColor.CLUB);
+
+        int result = PointsCounter.count(tenDiamond, sixClub);
+
+        assertThat(result).isEqualTo(1);
+    }
 }

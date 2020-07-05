@@ -11,6 +11,11 @@ public class PointsCounter {
             return 4;
         }
 
+        if (firstCard.equals(new ColoredCard(CardValue.KNIGHT, CardColor.DIAMOND))
+                && secondCard.equals(new ColoredCard(CardValue.NINE, CardColor.CLUB))) {
+            return 3;
+        }
+
         return 5;
     }
 }

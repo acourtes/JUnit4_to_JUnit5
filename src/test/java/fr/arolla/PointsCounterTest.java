@@ -28,4 +28,14 @@ public class PointsCounterTest {
 
         assertThat(result).isEqualTo(4);
     }
+
+    @Test
+    public void should_count_3_for_a_knight_and_an_9() {
+        var knightDiamond = new ColoredCard(CardValue.KNIGHT, CardColor.DIAMOND);
+        var nineClub = new ColoredCard(CardValue.NINE, CardColor.CLUB);
+
+        int result = PointsCounter.count(knightDiamond, nineClub);
+
+        assertThat(result).isEqualTo(3);
+    }
 }

@@ -66,4 +66,14 @@ public class PointsCounterTest {
 
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    public void should_count_5_for_a_1_and_an_16_trumps() {
+        var one = new Trump(TrumpValue.ONE);
+        var sixteen = new Trump(TrumpValue.SIXTEEN);
+
+        int result = PointsCounter.count(one, sixteen);
+
+        assertThat(result).isEqualTo(5);
+    }
 }

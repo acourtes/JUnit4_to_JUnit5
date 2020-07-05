@@ -1,6 +1,7 @@
 package fr.arolla.card;
 
 public enum TrumpValue {
+    FOOL,
     ONE,
     TWO,
     THREE,

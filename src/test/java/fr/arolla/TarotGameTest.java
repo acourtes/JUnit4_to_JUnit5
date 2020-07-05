@@ -89,4 +89,16 @@ public class TarotGameTest {
 
         assertEquals(oneTrump, winningCard);
     }
+
+    @Test
+    public void the_fool_should_not_win_over_colored_cards_and_trumps() {
+        var oneTrump = new Trump(TrumpValue.ONE);
+        var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
+        var fiveSpade = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
+        var fool = new Trump(TrumpValue.FOOL);
+
+        var winningCard = TarotGame.getWinningCard(List.of(fiveSpade, fool, kingHeart, oneTrump));
+
+        assertEquals(oneTrump, winningCard);
+    }
 }

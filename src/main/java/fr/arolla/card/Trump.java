@@ -15,8 +15,9 @@ public class Trump extends Card {
     }
 
     @Override
-    public boolean hasMorePointsThat(Card card) {
-        return false;
+    public boolean hasAHigherRankThat(Card card) {
+        var otherTrump = (Trump) card;
+        return this.value.ordinal() > otherTrump.value.ordinal();
     }
 
     @Override

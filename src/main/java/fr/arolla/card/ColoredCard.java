@@ -21,7 +21,7 @@ public class ColoredCard extends Card {
     }
 
     @Override
-    public boolean hasMorePointsThat(Card card) {
+    public boolean hasAHigherRankThat(Card card) {
         if (card instanceof ColoredCard) {
             return this.value.ordinal() > ((ColoredCard) card).value.ordinal();
         }

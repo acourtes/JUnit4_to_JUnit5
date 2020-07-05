@@ -67,4 +67,26 @@ public class TarotGameTest {
 
         assertEquals(fifteen, winningCard);
     }
+
+    @Test
+    public void the_two_of_trump_should_win_over_colored_cards() {
+        var twoTrump = new Trump(TrumpValue.TWO);
+        var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
+        var fiveSpade = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
+
+        var winningCard = TarotGame.getWinningCard(List.of(fiveSpade, kingHeart, twoTrump));
+
+        assertEquals(twoTrump, winningCard);
+    }
+
+    @Test
+    public void the_one_of_trump_should_win_over_colored_cards() {
+        var oneTrump = new Trump(TrumpValue.ONE);
+        var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
+        var fiveSpade = new ColoredCard(CardValue.FIVE, CardColor.SPADE);
+
+        var winningCard = TarotGame.getWinningCard(List.of(fiveSpade, kingHeart, oneTrump));
+
+        assertEquals(oneTrump, winningCard);
+    }
 }

@@ -21,8 +21,8 @@ public class Trump extends Card {
     }
 
     @Override
-    public boolean countsPoints() {
-        return false;
+    public int getPoints() {
+        return 0;
     }
 
     @Override

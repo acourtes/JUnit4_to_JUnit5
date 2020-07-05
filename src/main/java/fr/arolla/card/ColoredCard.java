@@ -1,12 +1,8 @@
 package fr.arolla.card;
 
-import java.util.List;
 import java.util.Objects;
 
 public class ColoredCard extends Card {
-
-    private final static List<CardValue> CARDS_WITH_POINTS = List.of(CardValue.KING, CardValue.QUEEN,
-            CardValue.KNIGHT, CardValue.JACK);
 
     public final CardValue value;
     public final CardColor color;
@@ -35,8 +31,8 @@ public class ColoredCard extends Card {
     }
 
     @Override
-    public boolean countsPoints() {
-        return CARDS_WITH_POINTS.contains(this.value);
+    public int getPoints() {
+        return this.value.getPoints();
     }
 
     @Override

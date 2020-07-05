@@ -6,5 +6,5 @@ public abstract class Card {
 
     public abstract boolean hasAHigherRankThat(Card card);
 
-    public abstract boolean countsPoints();
+    public abstract int getPoints();
 }

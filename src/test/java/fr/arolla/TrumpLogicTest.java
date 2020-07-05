@@ -41,7 +41,10 @@ public class TrumpLogicTest {
                         new Trump(TrumpValue.EIGHTEEN)},
                 {Arrays.asList(new Trump(TrumpValue.SEVEN), new Trump(TrumpValue.SEVENTEEN), new Trump(TrumpValue.EIGHT),
                         new Trump(TrumpValue.SIX), new Trump(TrumpValue.ONE)),
-                        new Trump(TrumpValue.SEVENTEEN)}
+                        new Trump(TrumpValue.SEVENTEEN)},
+                {Arrays.asList(new Trump(TrumpValue.SEVEN), new Trump(TrumpValue.FIFTEEN), new Trump(TrumpValue.FOOL),
+                        new Trump(TrumpValue.SIX), new Trump(TrumpValue.ONE)),
+                        new Trump(TrumpValue.FIFTEEN)}
         });
     }
 

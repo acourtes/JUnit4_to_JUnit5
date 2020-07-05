@@ -1,8 +1,6 @@
 package fr.arolla;
 
-import fr.arolla.card.CardColor;
-import fr.arolla.card.CardValue;
-import fr.arolla.card.ColoredCard;
+import fr.arolla.card.*;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -57,5 +55,15 @@ public class PointsCounterTest {
         int result = PointsCounter.count(tenDiamond, sixClub);
 
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void should_count_5_for_a_21_and_an_6_trumps() {
+        var twentyOne = new Trump(TrumpValue.TWENTY_ONE);
+        var six = new Trump(TrumpValue.SIX);
+
+        int result = PointsCounter.count(twentyOne, six);
+
+        assertThat(result).isEqualTo(5);
     }
 }

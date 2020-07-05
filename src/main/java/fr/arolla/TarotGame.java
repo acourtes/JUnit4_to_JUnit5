@@ -16,29 +16,23 @@ public class TarotGame {
             return TWENTY_ONE_TRUMP;
         }
 
-        var trumpsInTheTrick = trick.stream()
-                .filter(card -> card instanceof Trump)
-                .map(card -> (Trump)card)
-                .filter(trump -> trump.value != TrumpValue.FOOL)
-                .collect(Collectors.toList());
-
-        Card reference;
+        var trumpsInTheTrick = getTrumpsInTheTrick(trick);
 
         if (!trumpsInTheTrick.isEmpty()) {
-            reference = trumpsInTheTrick.get(0);
-
-            for (int i = 1; i < trumpsInTheTrick.size(); i++) {
-                var currentCard = trumpsInTheTrick.get(i);
-                if (currentCard.hasAHigherRankThat(reference)) {
-                    reference = currentCard;
-                }
-            }
-
-            return reference;
+            return getHigherTrumpRank(trumpsInTheTrick, trumpsInTheTrick.get(0));
         }
 
-        reference = trick.get(0);
+        return getHigherColoredCardRank(trick, trick.get(0));
+    }
 
+    private static List<Card> getTrumpsInTheTrick(List<Card> trick) {
+        return trick.stream()
+                .filter(card -> card instanceof Trump)
+                .filter(card -> ((Trump) card).value != TrumpValue.FOOL)
+                .collect(Collectors.toList());
+    }
+
+    private static Card getHigherColoredCardRank(List<Card> trick, Card reference) {
         for (int i = 1; i < trick.size(); i++) {
             var currentCard = trick.get(i);
             if (currentCard.hasSameColor(reference) &&
@@ -46,7 +40,16 @@ public class TarotGame {
                 reference = currentCard;
             }
         }
+        return reference;
+    }
 
+    private static Card getHigherTrumpRank(List<Card> trumpsInTheTrick, Card reference) {
+        for (int i = 1; i < trumpsInTheTrick.size(); i++) {
+            var currentCard = trumpsInTheTrick.get(i);
+            if (currentCard.hasAHigherRankThat(reference)) {
+                reference = currentCard;
+            }
+        }
         return reference;
     }
 }

@@ -18,4 +18,14 @@ public class PointsCounterTest {
 
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    public void should_count_4_for_a_queen_and_an_8() {
+        var queenSpade = new ColoredCard(CardValue.QUEEN, CardColor.SPADE);
+        var eightClub = new ColoredCard(CardValue.EIGHT, CardColor.CLUB);
+
+        int result = PointsCounter.count(queenSpade, eightClub);
+
+        assertThat(result).isEqualTo(4);
+    }
 }

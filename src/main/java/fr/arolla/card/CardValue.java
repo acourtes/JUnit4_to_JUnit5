@@ -1,28 +1,28 @@
 package fr.arolla.card;
 
 public enum CardValue {
-    ACE(0),
-    TWO(0),
-    THREE(0),
-    FOUR(0),
-    FIVE(0),
-    SIX(0),
-    SEVEN(0),
-    EIGHT(0),
-    NINE(0),
-    TEN(0),
-    JACK(2),
-    KNIGHT(3),
-    QUEEN(4),
-    KING(5);
+    ACE(0.5),
+    TWO(0.5),
+    THREE(0.5),
+    FOUR(0.5),
+    FIVE(0.5),
+    SIX(0.5),
+    SEVEN(0.5),
+    EIGHT(0.5),
+    NINE(0.5),
+    TEN(0.5),
+    JACK(1.5),
+    KNIGHT(2.5),
+    QUEEN(3.5),
+    KING(4.5);
 
-    private final int points;
+    private final double points;
 
-    CardValue(int points) {
+    CardValue(double points) {
         this.points = points;
     }
 
-    protected int getPoints() {
+    protected double getPoints() {
         return points;
     }
 }

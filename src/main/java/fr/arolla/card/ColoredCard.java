@@ -31,7 +31,7 @@ public class ColoredCard extends Card {
     }
 
     @Override
-    public int getPoints() {
+    public double getPoints() {
         return this.value.getPoints();
     }
 

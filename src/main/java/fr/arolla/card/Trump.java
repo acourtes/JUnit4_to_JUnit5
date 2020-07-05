@@ -21,7 +21,7 @@ public class Trump extends Card {
     }
 
     @Override
-    public int getPoints() {
+    public double getPoints() {
         return this.value.getPoints();
     }
 

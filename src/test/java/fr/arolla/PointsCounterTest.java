@@ -16,7 +16,7 @@ public class PointsCounterTest {
         var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);
         var sevenClub = new ColoredCard(CardValue.SEVEN, CardColor.CLUB);
 
-        int result = PointsCounter.count(kingHeart, sevenClub);
+        var result = PointsCounter.countPointsForTwoCards(kingHeart, sevenClub);
 
         assertThat(result).isEqualTo(5);
     }
@@ -26,7 +26,7 @@ public class PointsCounterTest {
         var queenSpade = new ColoredCard(CardValue.QUEEN, CardColor.SPADE);
         var eightClub = new ColoredCard(CardValue.EIGHT, CardColor.CLUB);
 
-        int result = PointsCounter.count(queenSpade, eightClub);
+        var result = PointsCounter.countPointsForTwoCards(queenSpade, eightClub);
 
         assertThat(result).isEqualTo(4);
     }
@@ -36,7 +36,7 @@ public class PointsCounterTest {
         var knightDiamond = new ColoredCard(CardValue.KNIGHT, CardColor.DIAMOND);
         var nineClub = new ColoredCard(CardValue.NINE, CardColor.CLUB);
 
-        int result = PointsCounter.count(knightDiamond, nineClub);
+        var result = PointsCounter.countPointsForTwoCards(knightDiamond, nineClub);
 
         assertThat(result).isEqualTo(3);
     }
@@ -46,7 +46,7 @@ public class PointsCounterTest {
         var jackHeart = new ColoredCard(CardValue.JACK, CardColor.HEART);
         var fourClub = new ColoredCard(CardValue.FOUR, CardColor.CLUB);
 
-        int result = PointsCounter.count(jackHeart, fourClub);
+        var result = PointsCounter.countPointsForTwoCards(jackHeart, fourClub);
 
         assertThat(result).isEqualTo(2);
     }
@@ -56,7 +56,7 @@ public class PointsCounterTest {
         var tenDiamond = new ColoredCard(CardValue.TEN, CardColor.DIAMOND);
         var sixClub = new ColoredCard(CardValue.SIX, CardColor.CLUB);
 
-        int result = PointsCounter.count(tenDiamond, sixClub);
+        var result = PointsCounter.countPointsForTwoCards(tenDiamond, sixClub);
 
         assertThat(result).isEqualTo(1);
     }
@@ -66,7 +66,7 @@ public class PointsCounterTest {
         var twentyOne = new Trump(TrumpValue.TWENTY_ONE);
         var six = new Trump(TrumpValue.SIX);
 
-        int result = PointsCounter.count(twentyOne, six);
+        var result = PointsCounter.countPointsForTwoCards(twentyOne, six);
 
         assertThat(result).isEqualTo(5);
     }
@@ -76,7 +76,7 @@ public class PointsCounterTest {
         var one = new Trump(TrumpValue.ONE);
         var sixteen = new Trump(TrumpValue.SIXTEEN);
 
-        int result = PointsCounter.count(one, sixteen);
+        var result = PointsCounter.countPointsForTwoCards(one, sixteen);
 
         assertThat(result).isEqualTo(5);
     }
@@ -86,7 +86,7 @@ public class PointsCounterTest {
         var fool = new Trump(TrumpValue.FOOL);
         var nineteen = new Trump(TrumpValue.NINETEEN);
 
-        int result = PointsCounter.count(fool, nineteen);
+        var result = PointsCounter.countPointsForTwoCards(fool, nineteen);
 
         assertThat(result).isEqualTo(5);
     }
@@ -96,8 +96,50 @@ public class PointsCounterTest {
         var three = new Trump(TrumpValue.THREE);
         var nineteen = new Trump(TrumpValue.NINETEEN);
 
-        int result = PointsCounter.count(three, nineteen);
+        var result = PointsCounter.countPointsForTwoCards(three, nineteen);
 
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void should_count_8_for_a_king_and_a_queen() {
+        var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
+        var queenClub = new ColoredCard(CardValue.QUEEN, CardColor.CLUB);
+
+        var result = PointsCounter.countPointsForTwoCards(kingDiamond, queenClub);
+
+        assertThat(result).isEqualTo(8);
+    }
+
+    @Test
+    public void should_count_12_for_a_king_a_queen_and_a_knight_with_3_simple_cards() {
+        var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
+        var queenClub = new ColoredCard(CardValue.QUEEN, CardColor.CLUB);
+        var knightSpade = new ColoredCard(CardValue.KNIGHT, CardColor.SPADE);
+        var aceHeart = new ColoredCard(CardValue.ACE, CardColor.HEART);
+        var aceSpade = new ColoredCard(CardValue.ACE, CardColor.SPADE);
+        var aceDiamond = new ColoredCard(CardValue.ACE, CardColor.DIAMOND);
+
+        var result = PointsCounter.countPoints(kingDiamond, aceHeart, queenClub,
+                aceSpade, knightSpade, aceDiamond);
+
+        assertThat(result).isEqualTo(12);
+    }
+
+    @Test
+    public void should_count_17_for_a_king_a_queen_a_knight_and_21_with_4_simple_cards() {
+        var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
+        var queenClub = new ColoredCard(CardValue.QUEEN, CardColor.CLUB);
+        var knightSpade = new ColoredCard(CardValue.KNIGHT, CardColor.SPADE);
+        var twentyOne = new Trump(TrumpValue.TWENTY_ONE);
+        var aceHeart = new ColoredCard(CardValue.ACE, CardColor.HEART);
+        var aceSpade = new ColoredCard(CardValue.ACE, CardColor.SPADE);
+        var aceDiamond = new ColoredCard(CardValue.ACE, CardColor.DIAMOND);
+        var threeDiamond = new ColoredCard(CardValue.THREE, CardColor.DIAMOND);
+
+        var result = PointsCounter.countPoints(kingDiamond, queenClub, knightSpade, twentyOne,
+                aceHeart, aceSpade, aceDiamond, threeDiamond);
+
+        assertThat(result).isEqualTo(17);
     }
 }

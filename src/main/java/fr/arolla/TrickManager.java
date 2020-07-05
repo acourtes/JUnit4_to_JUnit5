@@ -9,9 +9,16 @@ import java.util.stream.Collectors;
 
 public class TrickManager {
 
-    private final static Card TWENTY_ONE_TRUMP = new Trump(TrumpValue.TWENTY_ONE);
+    private static final Card TWENTY_ONE_TRUMP = new Trump(TrumpValue.TWENTY_ONE);
+    private static final List<Card> THE_THREE_OUDLERS = List.of(TWENTY_ONE_TRUMP, new Trump(TrumpValue.ONE),
+            new Trump(TrumpValue.FOOL));
+    public static final String THE_THREE_OUDLERS_CANNOT_BE_PLAYED_WITHIN_THE_SAME_TRICK = "The three oudlers cannot be played within the same trick";
 
-    public static Card getWinningCard(final List<Card> trick) {
+    public static Card getWinningCard(final List<Card> trick) throws ImpossibleCardsCombinationException {
+        if (trick.containsAll(THE_THREE_OUDLERS)) {
+            throw new ImpossibleCardsCombinationException(THE_THREE_OUDLERS_CANNOT_BE_PLAYED_WITHIN_THE_SAME_TRICK);
+        }
+
         if (trick.contains(TWENTY_ONE_TRUMP)) {
             return TWENTY_ONE_TRUMP;
         }

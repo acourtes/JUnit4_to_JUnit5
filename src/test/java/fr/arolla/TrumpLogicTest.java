@@ -49,7 +49,7 @@ public class TrumpLogicTest {
     }
 
     @Test
-    public void test_trumps_logic() {
+    public void test_trumps_logic() throws ImpossibleCardsCombinationException {
         assertThat(TrickManager.getWinningCard(trick)).isEqualTo(winningCard);
     }
 }

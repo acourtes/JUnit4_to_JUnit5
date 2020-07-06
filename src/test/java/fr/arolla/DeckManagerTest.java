@@ -2,10 +2,7 @@ package fr.arolla;
 
 import fr.arolla.card.Card;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -27,17 +24,15 @@ public class DeckManagerTest {
         should.assertAll();
     }
 
-    @Test
+    @RepeatedTest(value = 10)
     public void should_generate_a_shuffled_set_of_cards() {
         // JUnit 5 allows now to have repeated tests without using a for loop
-        for (int i = 0; i < 10; i++) {
-            final List<Card> deck = DeckManager.generate();
-            final List<Card> secondDeck = DeckManager.generate();
+        final List<Card> deck = DeckManager.generate();
+        final List<Card> secondDeck = DeckManager.generate();
 
-            Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, deck.size());
-            Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, secondDeck.size());
-            Assertions.assertNotEquals(deck, secondDeck);
-        }
+        Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, deck.size());
+        Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, secondDeck.size());
+        Assertions.assertNotEquals(deck, secondDeck);
     }
 
     @Test

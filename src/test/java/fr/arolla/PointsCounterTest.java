@@ -159,7 +159,7 @@ public class PointsCounterTest {
         var firstTrick = new Trick(List.of(kingDiamond, queenClub, knightSpade, aceHeart));
         var lastTrick = new Trick(List.of(aceSpade, one, aceDiamond, threeDiamond));
 
-        var result = PointsCounter.countPointsForTricks(List.of(firstTrick, lastTrick));
+        var result = PointsCounter.countPoints(List.of(firstTrick, lastTrick));
 
         assertThat(result).isEqualTo(27);
     }

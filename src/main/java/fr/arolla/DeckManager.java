@@ -48,12 +48,7 @@ public class DeckManager {
     }
 
     public static List<Player> distribute(List<Card> deck, int numberOfPlayers) {
-        final List<Player> players = new ArrayList<>(numberOfPlayers + 1);
-
-        for (int i = 0; i < numberOfPlayers; i++) {
-            players.add(new Player("Player " + i + 1));
-        }
-        players.add(Player.createDogPlayer());
+        final List<Player> players = createPlayers(numberOfPlayers);
 
         var numberOfDistributionTurns = (TOTAL_NUMBER_OF_CARDS_IN_TAROT - NUMBER_OF_CARDS_IN_DOG)
                 / (numberOfPlayers * NUMBER_OF_CARDS_DISTRIBUTED_EACH_TURN);
@@ -74,6 +69,16 @@ public class DeckManager {
 
         }
 
+        return players;
+    }
+
+    private static List<Player> createPlayers(int numberOfPlayers) {
+        final List<Player> players = new ArrayList<>(numberOfPlayers + 1);
+
+        for (int i = 0; i < numberOfPlayers; i++) {
+            players.add(new Player("Player " + i + 1));
+        }
+        players.add(Player.createDogPlayer());
         return players;
     }
 }

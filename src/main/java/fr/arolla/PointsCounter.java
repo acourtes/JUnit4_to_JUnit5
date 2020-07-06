@@ -17,7 +17,7 @@ public class PointsCounter {
                 .reduce((double) 0, Double::sum);
     }
 
-    public static double countPointsForTricks(List<Trick> tricks) {
+    public static double countPoints(List<Trick> tricks) {
         var simpleScore = tricks.stream()
                 .map(Trick::getCardsPoints)
                 .reduce((double) 0, Double::sum);

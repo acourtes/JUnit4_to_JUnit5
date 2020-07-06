@@ -37,7 +37,13 @@ public class DeckManager {
     }
 
     public static List<Card> cut(List<Card> deck) {
-        var numberOfCards = new Random().nextInt(TOTAL_NUMBER_OF_CARDS_IN_TAROT - MINIMUM_SIZE_OF_THE_CUT);
+        var random = new Random();
+        var numberOfCards = getNumberOfCards(random);
+
+        while (numberOfCards < 3) {
+            numberOfCards = getNumberOfCards(random);
+        }
+
         var firstPartOfTheCut = deck.subList(0, numberOfCards);
         var secondPartOfTheCut = deck.subList(numberOfCards, deck.size());
 
@@ -45,6 +51,10 @@ public class DeckManager {
         cutDeck.addAll(firstPartOfTheCut);
 
         return cutDeck;
+    }
+
+    private static int getNumberOfCards(Random random) {
+        return random.nextInt(TOTAL_NUMBER_OF_CARDS_IN_TAROT - MINIMUM_SIZE_OF_THE_CUT);
     }
 
     public static List<Player> distribute(List<Card> deck, int numberOfPlayers) {

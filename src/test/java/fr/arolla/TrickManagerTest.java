@@ -21,7 +21,7 @@ public class TrickManagerTest {
         var three = new ColoredCard(CardValue.THREE, CardColor.SPADE);
 
         var winningCard = TrickManager.getWinningCard(List.of(ace, two, three));
-
+        // Is it a good idea to use JUnit 4 assertions when we want to migrate to JUnit 5 ?
         assertEquals(three, winningCard);
     }
 
@@ -114,6 +114,7 @@ public class TrickManagerTest {
         assertEquals(fiveSpade, winningCard);
     }
 
+    // JUnit 5 has now a more standard way to deal with exceptions
     @Test(expected = ImpossibleCardsCombinationException.class)
     public void the_fool_the_one_and_the_21_should_not_be_within_the_same_trick() throws ImpossibleCardsCombinationException {
         var one = new Trump(TrumpValue.ONE);

@@ -14,6 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.runners.Parameterized.Parameters;
 
+// With JUnit 5, the parameterized tests are now much easier to use
 @RunWith(Parameterized.class)
 public class TrumpLogicTest {
 

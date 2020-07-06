@@ -11,6 +11,7 @@ import java.util.Collection;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.runners.Parameterized.Parameter;
 
+// With JUnit 5, the parameterized tests are now much easier to use
 @RunWith(Parameterized.class)
 public class PointsCountParameterizedTest {
 

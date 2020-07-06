@@ -83,7 +83,6 @@ public class DeckManagerTest {
         assertThat(player2Cards).hasSize(24);
         assertThat(player3Cards).hasSize(24);
 
-        // With JUnit 5, there is a way to make multiple assertions the same way as AssertJ SoftAssertions
         should.assertThat(dogsCards).doesNotContainAnyElementsOf(cutDeck.subList(0, 3));
         should.assertThat(dogsCards).doesNotContainAnyElementsOf(cutDeck.subList(cutDeck.size() - 3, cutDeck.size()));
 
@@ -114,7 +113,6 @@ public class DeckManagerTest {
         assertThat(player2Cards).hasSize(18);
         assertThat(player3Cards).hasSize(18);
 
-        // With JUnit 5, there is a way to make multiple assertions the same way as AssertJ SoftAssertions
         should.assertThat(dogsCards).doesNotContainAnyElementsOf(cutDeck.subList(0, 3));
         should.assertThat(dogsCards).doesNotContainAnyElementsOf(cutDeck.subList(cutDeck.size() - 3, cutDeck.size()));
 

@@ -5,7 +5,7 @@ import fr.arolla.card.CardValue;
 import fr.arolla.card.ColoredCard;
 import fr.arolla.card.Trump;
 import fr.arolla.card.TrumpValue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

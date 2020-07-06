@@ -2,10 +2,10 @@ package fr.arolla;
 
 import fr.arolla.card.Card;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,12 +17,12 @@ public class DeckManagerTest {
     private static final int NUMBER_OF_CARDS_IN_TAROT = 78;
     private SoftAssertions should;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         should = new SoftAssertions();
     }
 
-    @After
+    @AfterEach
     public void finalizeTest() {
         should.assertAll();
     }
@@ -34,9 +34,9 @@ public class DeckManagerTest {
             final List<Card> deck = DeckManager.generate();
             final List<Card> secondDeck = DeckManager.generate();
 
-            Assert.assertEquals(NUMBER_OF_CARDS_IN_TAROT, deck.size());
-            Assert.assertEquals(NUMBER_OF_CARDS_IN_TAROT, secondDeck.size());
-            Assert.assertNotEquals(deck, secondDeck);
+            Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, deck.size());
+            Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, secondDeck.size());
+            Assertions.assertNotEquals(deck, secondDeck);
         }
     }
 
@@ -46,7 +46,7 @@ public class DeckManagerTest {
 
         var uniqueCards = new HashSet<>(deck);
 
-        Assert.assertEquals(NUMBER_OF_CARDS_IN_TAROT, uniqueCards.size());
+        Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, uniqueCards.size());
     }
 
     @Test

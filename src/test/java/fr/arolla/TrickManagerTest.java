@@ -5,12 +5,12 @@ import fr.arolla.card.CardValue;
 import fr.arolla.card.ColoredCard;
 import fr.arolla.card.Trump;
 import fr.arolla.card.TrumpValue;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TrickManagerTest {
 
@@ -115,25 +115,17 @@ public class TrickManagerTest {
     }
 
     // JUnit 5 has now a more standard way to deal with exceptions
-    @Test(expected = ImpossibleCardsCombinationException.class)
-    public void the_fool_the_one_and_the_21_should_not_be_within_the_same_trick() throws ImpossibleCardsCombinationException {
-        var one = new Trump(TrumpValue.ONE);
-        var twentyOne = new Trump(TrumpValue.TWENTY_ONE);
-        var fool = new Trump(TrumpValue.FOOL);
-
-        TrickManager.getWinningCard(List.of(one, fool, twentyOne));
-    }
-
     @Test
-    public void the_fool_the_one_and_the_21_should_throw_exception_with_correct_message() {
+    public void the_fool_the_one_and_the_21_should_not_be_within_the_same_trick() {
         var one = new Trump(TrumpValue.ONE);
         var twentyOne = new Trump(TrumpValue.TWENTY_ONE);
         var fool = new Trump(TrumpValue.FOOL);
 
-        try {
-            TrickManager.getWinningCard(List.of(one, fool, twentyOne));
-        } catch (ImpossibleCardsCombinationException e) {
-            Assert.assertEquals("The three oudlers cannot be played within the same trick", e.getMessage());
-        }
+        // It was also possible here to use directly AssertJ and avoid code modification after
+        // JUnit 5 migration
+        var exception = assertThrows(ImpossibleCardsCombinationException.class,
+                () -> TrickManager.getWinningCard(List.of(one, fool, twentyOne)));
+
+        assertEquals("The three oudlers cannot be played within the same trick", exception.getMessage());
     }
 }

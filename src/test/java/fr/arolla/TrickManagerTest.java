@@ -5,6 +5,7 @@ import fr.arolla.card.CardValue;
 import fr.arolla.card.ColoredCard;
 import fr.arolla.card.Trump;
 import fr.arolla.card.TrumpValue;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TrickManagerTest {
 
     @Test
+    @DisplayName("The 3 should win over an ace and a two")
     public void the_3_should_win_over_ace_and_two() throws ImpossibleCardsCombinationException {
         var ace = new ColoredCard(CardValue.ACE, CardColor.SPADE);
         var two = new ColoredCard(CardValue.TWO, CardColor.SPADE);
@@ -59,6 +61,7 @@ public class TrickManagerTest {
     }
 
     @Test
+    @DisplayName("The 15 trump should win over the 14 and the 2")
     public void the_15_should_win_over_14_and_2_trumps() throws ImpossibleCardsCombinationException {
         var fifteen = new Trump(TrumpValue.FIFTEEN);
         var fourteen = new Trump(TrumpValue.FOURTEEN);
@@ -81,6 +84,7 @@ public class TrickManagerTest {
     }
 
     @Test
+    @DisplayName("The little one should win over any colored cards")
     public void the_one_of_trump_should_win_over_colored_cards() throws ImpossibleCardsCombinationException {
         var oneTrump = new Trump(TrumpValue.ONE);
         var kingHeart = new ColoredCard(CardValue.KING, CardColor.HEART);

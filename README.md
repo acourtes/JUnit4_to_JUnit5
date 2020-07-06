@@ -23,3 +23,5 @@ You will see after :
 * ...
 
 A very useful link about JUnit 5 in french : http://www.jmdoudoux.fr/java/dej/chap-junit5.htm
+
+You will find on this branch a proposal of what can be done with JUnit 5 and its most used features.

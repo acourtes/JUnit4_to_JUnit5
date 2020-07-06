@@ -47,9 +47,6 @@ public class ColoredCard extends Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "cardValue=" + value +
-                ", cardColor=" + color +
-                '}';
+        return "{" + value + ", " + color + '}';
     }
 }

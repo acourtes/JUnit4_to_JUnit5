@@ -39,8 +39,6 @@ public class Trump extends Card {
 
     @Override
     public String toString() {
-        return "Trump{" +
-                "value=" + value +
-                '}';
+        return "{" + value + '}';
     }
 }

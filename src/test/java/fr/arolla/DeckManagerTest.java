@@ -56,13 +56,17 @@ public class DeckManagerTest {
         final List<Card> cutDeck = DeckManager.cut(deck);
 
         // With JUnit 5, there is a way to make multiple assertions the same way as AssertJ SoftAssertions
-        should.assertThat(cutDeck).hasSize(NUMBER_OF_CARDS_IN_TAROT);
-        should.assertThat(cutDeck).isNotEqualTo(deck);
-        // The 2 last cards from the deck cannot be the 2 first distributed cards of the cut deck
-        var beforeLastCard = deck.get(deck.size() - 2);
-        var lastCard = deck.get(deck.size() - 1);
-        var firstTwoCutDeckCards = cutDeck.subList(0, 2);
-        should.assertThat(List.of(beforeLastCard, lastCard)).isNotEqualTo(firstTwoCutDeckCards);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(NUMBER_OF_CARDS_IN_TAROT, cutDeck.size()),
+                () -> Assertions.assertNotEquals(deck, cutDeck),
+                () -> {
+                    // The 2 last cards from the deck cannot be the 2 first distributed cards of the cut deck
+                    var beforeLastCard = deck.get(deck.size() - 2);
+                    var lastCard = deck.get(deck.size() - 1);
+                    var firstTwoCutDeckCards = cutDeck.subList(0, 2);
+                    Assertions.assertNotEquals(List.of(beforeLastCard, lastCard), firstTwoCutDeckCards);
+                }
+        );
     }
 
     @Test

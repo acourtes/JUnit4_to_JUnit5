@@ -55,13 +55,19 @@ public class DeckManager {
 
         var lastUsedDeckIndex = 0;
         for (int i = 0; i < numberOfDistributionTurns; i++) {
+            if (i == numberOfDistributionTurns - 1) {
+                var dog = players.get(players.size() - 1);
+                if (dogIsNotYetComplete(dog)) {
+                    dog.getCards().add(deck.get(lastUsedDeckIndex++));
+                }
+            }
             for (Player player : players) {
                 if (player.isNotDog()) {
                     player.getCards().addAll(deck.subList(lastUsedDeckIndex,
                             lastUsedDeckIndex + 3));
                     lastUsedDeckIndex += 3;
                 } else {
-                    if (player.getCards().size() < NUMBER_OF_CARDS_IN_DOG) {
+                    if (dogIsNotYetComplete(player)) {
                         player.getCards().add(deck.get(lastUsedDeckIndex++));
                     }
                 }
@@ -70,6 +76,10 @@ public class DeckManager {
         }
 
         return players;
+    }
+
+    private static boolean dogIsNotYetComplete(Player dog) {
+        return dog.getCards().size() < NUMBER_OF_CARDS_IN_DOG;
     }
 
     private static List<Player> createPlayers(int numberOfPlayers) {

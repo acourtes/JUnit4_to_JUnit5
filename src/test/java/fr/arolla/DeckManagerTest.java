@@ -1,6 +1,7 @@
 package fr.arolla;
 
 import fr.arolla.card.Card;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -76,5 +77,41 @@ public class DeckManagerTest {
         assertThat(player2Cards).doesNotContainAnyElementsOf(player3Cards);
         assertThat(player2Cards).doesNotContainAnyElementsOf(dogsCards);
         assertThat(player3Cards).doesNotContainAnyElementsOf(dogsCards);
+    }
+
+    @Test
+    public void should_distribute_cards_for_4_players() {
+        var numberOfPlayers = 4;
+        final List<Card> deck = DeckManager.generate();
+        var cutDeck = DeckManager.cut(deck);
+        final List<Player> players = DeckManager.distribute(cutDeck, numberOfPlayers);
+
+        assertThat(players.size()).isEqualTo(5); // 4 players + dog
+        var player1Cards = players.get(0).getCards();
+        var player2Cards = players.get(1).getCards();
+        var player3Cards = players.get(2).getCards();
+        var player4Cards = players.get(3).getCards();
+        var dogsCards = players.get(4).getCards();
+
+        assertThat(dogsCards).hasSize(6);
+        assertThat(player1Cards).hasSize(18);
+        assertThat(player2Cards).hasSize(18);
+        assertThat(player3Cards).hasSize(18);
+
+        var should = new SoftAssertions();
+        should.assertThat(dogsCards).doesNotContainAnyElementsOf(cutDeck.subList(0, 3));
+        should.assertThat(dogsCards).doesNotContainAnyElementsOf(cutDeck.subList(cutDeck.size() - 3, cutDeck.size()));
+
+        should.assertThat(player1Cards).doesNotContainAnyElementsOf(player2Cards);
+        should.assertThat(player1Cards).doesNotContainAnyElementsOf(player3Cards);
+        should.assertThat(player1Cards).doesNotContainAnyElementsOf(player4Cards);
+        should.assertThat(player1Cards).doesNotContainAnyElementsOf(dogsCards);
+        should.assertThat(player2Cards).doesNotContainAnyElementsOf(player3Cards);
+        should.assertThat(player2Cards).doesNotContainAnyElementsOf(player4Cards);
+        should.assertThat(player2Cards).doesNotContainAnyElementsOf(dogsCards);
+        should.assertThat(player3Cards).doesNotContainAnyElementsOf(player4Cards);
+        should.assertThat(player3Cards).doesNotContainAnyElementsOf(dogsCards);
+
+        should.assertAll();
     }
 }

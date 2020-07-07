@@ -19,17 +19,17 @@ public class DeckManagerTest {
     private SoftAssertions should;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         should = new SoftAssertions();
     }
 
     @AfterEach
-    public void finalizeTest() {
+    void finalizeTest() {
         should.assertAll();
     }
 
     @RepeatedTest(value = 10)
-    public void should_generate_a_shuffled_set_of_cards() {
+    void should_generate_a_shuffled_set_of_cards() {
         // JUnit 5 allows now to have repeated tests without using a for loop
         final List<Card> deck = DeckManager.generate();
         final List<Card> secondDeck = DeckManager.generate();
@@ -40,7 +40,7 @@ public class DeckManagerTest {
     }
 
     @Test
-    public void should_generate_a_correct_shuffled_set_of_cards() {
+    void should_generate_a_correct_shuffled_set_of_cards() {
         final List<Card> deck = DeckManager.generate();
 
         var uniqueCards = new HashSet<>(deck);
@@ -49,7 +49,7 @@ public class DeckManagerTest {
     }
 
     @Test
-    public void should_cut_a_deck() {
+    void should_cut_a_deck() {
         final List<Card> deck = DeckManager.generate();
 
         final List<Card> cutDeck = DeckManager.cut(deck);
@@ -69,7 +69,7 @@ public class DeckManagerTest {
     }
 
     @Test
-    public void should_distribute_cards_for_3_players() {
+    void should_distribute_cards_for_3_players() {
         var numberOfPlayers = 3;
         final List<Card> deck = DeckManager.generate();
         var cutDeck = DeckManager.cut(deck);
@@ -98,7 +98,7 @@ public class DeckManagerTest {
     }
 
     @Test
-    public void should_distribute_cards_for_4_players() {
+    void should_distribute_cards_for_4_players() {
         var numberOfPlayers = 4;
         final List<Card> deck = DeckManager.generate();
         var cutDeck = DeckManager.cut(deck);

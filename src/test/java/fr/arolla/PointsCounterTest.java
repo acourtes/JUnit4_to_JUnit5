@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PointsCounterTest {
 
     @Test
-    public void should_count_12_for_a_king_a_queen_and_a_knight_with_3_simple_cards() {
+    void should_count_12_for_a_king_a_queen_and_a_knight_with_3_simple_cards() {
         var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
         var queenClub = new ColoredCard(CardValue.QUEEN, CardColor.CLUB);
         var knightSpade = new ColoredCard(CardValue.KNIGHT, CardColor.SPADE);
@@ -29,7 +29,7 @@ public class PointsCounterTest {
     }
 
     @Test
-    public void should_count_17_for_a_king_a_queen_a_knight_and_21_with_4_simple_cards() {
+    void should_count_17_for_a_king_a_queen_a_knight_and_21_with_4_simple_cards() {
         var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
         var queenClub = new ColoredCard(CardValue.QUEEN, CardColor.CLUB);
         var knightSpade = new ColoredCard(CardValue.KNIGHT, CardColor.SPADE);
@@ -46,7 +46,7 @@ public class PointsCounterTest {
     }
 
     @Test
-    public void should_count_10_extra_points_when_the_little_one_is_in_the_last_trick_of_two_tricks() {
+    void should_count_10_extra_points_when_the_little_one_is_in_the_last_trick_of_two_tricks() {
         var kingDiamond = new ColoredCard(CardValue.KING, CardColor.DIAMOND);
         var queenClub = new ColoredCard(CardValue.QUEEN, CardColor.CLUB);
         var knightSpade = new ColoredCard(CardValue.KNIGHT, CardColor.SPADE);

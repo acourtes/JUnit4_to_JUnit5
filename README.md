@@ -7,6 +7,7 @@ This kata is done for this. It's based on :
 * JUnit 4 tests and assertions
 * JUnit 4 parameterized tests
 * AssertJ assertions
+* JUnit 4 test with CSV file
 
 And the project is about the tarot game :)
 More information by reading this page : https://en.wikipedia.org/wiki/French_Tarot

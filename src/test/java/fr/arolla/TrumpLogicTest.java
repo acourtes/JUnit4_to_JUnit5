@@ -3,6 +3,7 @@ package fr.arolla;
 import fr.arolla.card.Card;
 import fr.arolla.card.Trump;
 import fr.arolla.card.TrumpValue;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -51,10 +52,9 @@ public class TrumpLogicTest {
     void test_trumps_order(TrumpValue trumpValue) {
         EnumSet<TrumpValue> oudlers = EnumSet.of(TrumpValue.ONE, TrumpValue.FOOL, TrumpValue.TWENTY_ONE);
 
-        if (oudlers.contains(trumpValue)) {
-            assertThat(trumpValue.getPoints()).isEqualTo(4.5);
-        } else {
-            assertThat(trumpValue.getPoints()).isEqualTo(0.5);
-        }
+        Assumptions.assumingThat(oudlers.contains(trumpValue),
+                () -> assertThat(trumpValue.getPoints()).isEqualTo(4.5));
+        Assumptions.assumingThat(!oudlers.contains(trumpValue),
+                () -> assertThat(trumpValue.getPoints()).isEqualTo(0.5));
     }
 }

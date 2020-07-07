@@ -1,0 +1,5 @@
+firstCard,secondCards,expectedPoints
+TWENTY_ONE,SIX,5
+ONE,SIXTEEN,5
+FOOL,NINETEEN,5
+THREE,NINETEEN,1

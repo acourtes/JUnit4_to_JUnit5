@@ -5,8 +5,11 @@ import fr.arolla.card.CardValue;
 import fr.arolla.card.ColoredCard;
 import fr.arolla.card.Trump;
 import fr.arolla.card.TrumpValue;
+import org.hamcrest.CoreMatchers;
+import org.junit.Assume;
 import org.junit.Test;
 
+import java.util.EnumSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,5 +65,17 @@ public class PointsCounterTest {
         var result = PointsCounter.countPoints(List.of(firstTrick, lastTrick));
 
         assertThat(result).isEqualTo(27);
+    }
+
+    @Test
+    public void test_trumps_values() {
+        final EnumSet<TrumpValue> oudlers = EnumSet.of(TrumpValue.FOOL, TrumpValue.ONE, TrumpValue.TWENTY_ONE);
+
+        for (TrumpValue value : TrumpValue.values()) {
+            Assume.assumeThat(oudlers.contains(value),
+                    CoreMatchers.equalTo(value.getPoints() == 4.5));
+            Assume.assumeThat(!oudlers.contains(value),
+                    CoreMatchers.equalTo(value.getPoints() == 0.5));
+        }
     }
 }

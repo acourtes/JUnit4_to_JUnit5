@@ -30,7 +30,7 @@ public enum TrumpValue {
         this.points = points;
     }
 
-    protected double getPoints() {
+    public double getPoints() {
         return points;
     }
 }
